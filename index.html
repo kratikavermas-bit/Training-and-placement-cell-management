@@ -174,7 +174,7 @@ if (!user) {
   window.location.href = "login.html";
 }
 async function loadJobAlerts() {
-  const res = await fetch("http://localhost:5000/api/jobs");
+  const res = await fetch("/api/jobs");
   const jobs = await res.json();
 
   const marquee = document.querySelector(".job-alerts marquee");
