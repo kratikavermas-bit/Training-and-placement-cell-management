@@ -1,0 +1,93 @@
+/* Banner */
+.contact-banner {
+  background: url("../images/contact-banner.jpg") no-repeat center center/cover;
+  color: rgb(113, 4, 4);
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.contact-banner h1 {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.contact-banner p {
+  font-size: 18px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Section */
+.contact-section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 60px 30px;
+  background: #f9f9f9;
+}
+
+/* Cards */
+.contact-card {
+  background: #fff;
+  width: 400px;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Form */
+.contact-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-card input, 
+.contact-card textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.contact-card input:focus,
+.contact-card textarea:focus {
+  border-color: #007BFF;
+}
+
+.contact-card button {
+  padding: 12px;
+  background: #007BFF;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.contact-card button:hover {
+  background: #0056b3;
+}
+
+/* Map Card */
+.map-card iframe {
+  border-radius: 10px;
+}
+/* Contact Information */
+.contact-card p {
+  font-size: 15px;
+  color: #444;
+  margin: 8px 0;
+}
+
+.contact-card strong {
+  color: #222;
+}

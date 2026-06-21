@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Alerts - My College</title>
+    <link rel="stylesheet" href="style.css"> <!-- Navbar & general styles -->
+    <link rel="stylesheet" href="jobs.css">  <!-- Jobs page styles -->
+</head>
+<body>
+
+<!-- Navbar (same as index.html) -->
+<header>
+    <div class="navbar">
+        <div class="logo">
+            <img src="image logo.png" alt="College Logo">
+            <span>REC Banda</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Job Alerts</a></li>
+                <li><a href="internship.html">Internships</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="ebooks.html">E-Books</a></li>
+                <li><a href="nptel.html">NPTEL Courses</a></li>
+               <li><a href="contact .html" class="contact-btn">Contact Us</a></li>
+               <button id="logoutBtn" class="logout-btn">Logout</button>
+            </ul>
+        </nav>
+    </div>
+    <div class="back-dashboard">
+  <a href="dashboard.html">⬅ Back to Dashboard</a>
+</div>
+
+</header>
+
+
+<!-- Jobs Section -->
+
+    <div class="job-section">
+    <h2>Available Jobs</h2>
+
+    <div class="job-card">
+        <img src="software.webp" alt="Software Developer" class="job-image">
+        <h3>Software Developer at ABC Corp</h3>
+        <p><strong>Deadline:</strong> 30 Sep 2025</p>
+        <p>Join ABC Corp as a software developer and work on exciting projects.</p>
+        <button onclick="openForm('Software Developer at ABC Corp')">Apply Now</button>
+    </div>
+
+    <div class="job-card">
+        <img src="data.webp" alt="Data Analyst Internship" class="job-image">
+        <h3>Data Analyst Internship at XYZ Pvt Ltd</h3>
+        <p><strong>Deadline:</strong> 15 Oct 2025</p>
+        <p>Gain hands-on experience as a data analyst with XYZ Pvt Ltd.</p>
+        <button onclick="openForm('Data Analyst Internship at XYZ Pvt Ltd')">Apply Now</button>
+    </div>
+
+    <div class="job-card">
+        <img src="web developement.webp" alt="Web Developer" class="job-image">
+        <h3>Web Developer at LMN Tech</h3>
+        <p><strong>Deadline:</strong> 10 Oct 2025</p>
+        <p>Work with LMN Tech on web development projects and innovative solutions.</p>
+        <button onclick="openForm('Web Developer at LMN Tech')">Apply Now</button>
+    </div>
+</div>
+
+
+<!-- Apply Form Modal -->
+<div class="modal" id="jobModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeForm()">&times;</span>
+        <h2 id="jobTitle">Apply for Job</h2>
+        <form action="#" method="post">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="message" rows="4" placeholder="Your Message / CV Link" required></textarea>
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    &copy; 2025 My College. All rights reserved.
+</footer>
+
+<script>
+    // Open modal and set job title
+    function openForm(jobName) {
+        document.getElementById('jobModal').style.display = 'flex';
+        document.getElementById('jobTitle').innerText = `Apply for ${jobName}`;
+    }
+
+    // Close modal
+    function closeForm() {
+        document.getElementById('jobModal').style.display = 'none';
+    }
+
+    // Close modal if clicked outside
+    window.onclick = function(event) {
+        const modal = document.getElementById('jobModal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+  // Check if user is logged in — redirect to login if not
+  const user = localStorage.getItem("userEmail");
+  if (!user) {
+    window.location.href = "login.html";
+  }
+
+  // Logout function
+  function logout() {
+    localStorage.removeItem("userEmail"); // clear user session
+    alert("Logged out successfully!");
+    window.location.href = "login.html"; // redirect to login page
+  }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My College</title>
+    <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+<script>
+  // Always open login page first when someone opens index.html
+  if (!localStorage.getItem("userEmail")) {
+    window.location.href = "login.html";
+  }
+</script>
+
+
+<!-- Navbar -->
+<header>
+    <div class="navbar">
+        <div class="logo">
+            <img src="image logo.png" alt="College Logo">
+            <span>REC Banda</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Job Alerts</a></li>
+                <li><a href="internship.html">Internships</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="ebooks.html">E-Books</a></li>
+                <li><a href="nptel.html">NPTEL Courses</a></li>
+                <li><a href="contact .html" class="contact-btn">Contact Us</a></li>
+                 
+   <button id="logoutBtn" class="logout-btn">Logout</button>
+
+            </ul>
+        </nav>
+    </div>
+    <div class="back-dashboard">
+  <a href="dashboard.html">⬅ Back to Dashboard</a>
+</div>
+
+</header>
+<!-- Latest Job Alerts Notice Bar -->
+<div class="job-alerts">
+  <marquee behavior="scroll" direction="left" scrollamount="6">
+    🚀 New Job: Software Engineer at Infosys – Apply by 5th Oct |
+    💼 Internship: Web Developer at Wipro – Deadline 7th Oct |
+    📢 Project: AI Research Collaboration – Apply Now |
+    ✨ NPTEL Course: Cloud Computing Enrollment Open!
+  </marquee>
+</div>
+
+<!-- Banner -->
+<div class="banner">
+    Welcome to My College
+</div>
+
+
+<!-- Job Alerts Teaser -->
+<section class="job-alerts">
+  <h2>Latest Job Alerts</h2>
+  <div class="job-cards">
+    <!-- job cards here -->
+  </div>
+</section>
+
+
+
+<!-- Email Subscription -->
+<section class="email-subscription">
+  <h2>Stay Updated!</h2>
+  <p>Enter your college email to receive job alerts, internships, and project updates directly in your inbox.</p>
+  <form id="subscriptionForm" action="subscribe.php" method="post">
+    <input type="email" name="email" placeholder="Enter your college email" required pattern=".*@yourcollege\.edu$">
+    <button type="submit">Subscribe</button>
+  </form>
+</section>
+
+
+
+<section class="notice-section">
+  <h2>Latest Job Opportunities</h2>
+  <div class="notice-cards">
+
+    <div class="notice-card">
+      <img src="software.webp" alt="Job 1">
+      <div class="notice-content">
+        <h3>Software Developer</h3>
+        <p><strong>Company:</strong> TechCorp</p>
+        <p><strong>Deadline:</strong> 30 Sep 2025</p>
+        <a href="jobs.html"><button>Apply Now</button></a>
+      </div>
+    </div>
+
+    <div class="notice-card">
+      <img src="data.webp" alt="Job 2">
+      <div class="notice-content">
+        <h3>Data Analyst</h3>
+        <p><strong>Company:</strong> DataX</p>
+        <p><strong>Deadline:</strong> 5 Oct 2025</p>
+        <a href="jobs.html"><button>Apply Now</button></a>
+      </div>
+    </div>
+
+    <div class="notice-card">
+      <img src="web developement.webp" alt="Job 3">
+      <div class="notice-content">
+        <h3>Web Designer</h3>
+        <p><strong>Company:</strong> CreativeWorks</p>
+        <p><strong>Deadline:</strong> 10 Oct 2025</p>
+        <a href="jobs.html"><button>Apply Now</button></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+ 
+<!-- Replace your existing button block with this -->
+<div style="width:100%; text-align:center; margin:30px 0; clear:both;">
+  <a href="https://www.linkedin.com" target="_blank" class="linkedin-btn" style="display:inline-block; margin:0; position:static; left:auto; transform:none;">
+   <img src="linkedin.jpg" alt="LinkedIn">  Connect on LinkedIn
+  </a>
+</div>
+
+<!-- Alumni Network Section -->
+<section class="alumni-network-link">
+  <h2>Alumni Network</h2>
+  <p>Connect with our alumni, interact, and build your professional network.</p>
+  <a href="alumni.html" class="alumni-btn">Go to alumni Network</a>
+</section>
+
+
+<!-- Alumni Feedback Section -->
+<div class="section" id="alumni-feedback">
+    <h2>Alumni Feedback</h2>
+    <p>We value our alumni’s opinions! Please share your feedback to help us improve.</p>
+
+    <div class="feedback-box">
+        <form action="#" method="post" class="feedback-form">
+            <label for="name">Full Name</label><br>
+            <input type="text" id="name" name="name" placeholder="Your Name" required><br>
+
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email" placeholder="Your Email" required><br>
+
+            <label for="feedback">Feedback</label><br>
+            <textarea id="feedback" name="feedback" rows="5" placeholder="Your Feedback" required></textarea><br>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+</div>
+
+
+
+<!-- Footer -->
+<footer>
+    &copy; 2025 My College. All rights reserved.
+</footer>
+<script>
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  localStorage.removeItem("loggedIn");
+  localStorage.removeItem("userEmail");
+  alert("You have been logged out.");
+  window.location.href = "login.html";
+});
+// ✅ Block access if user not logged in
+const user = localStorage.getItem("userEmail");
+if (!user) {
+  window.location.href = "login.html";
+}
+async function loadJobAlerts() {
+  const res = await fetch("http://localhost:5000/api/jobs");
+  const jobs = await res.json();
+
+  const marquee = document.querySelector(".job-alerts marquee");
+  marquee.innerHTML = jobs
+    .map(job => `🚀 ${job.title} at ${job.company} – Apply by ${job.deadline}`)
+    .join(" | ");
+}
+
+loadJobAlerts();
+</script>
+
+
+</body>
+</html>

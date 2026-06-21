@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | REC Banda</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ===== LOGIN PAGE DESIGN ===== */
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #015940, #047f58);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .login-container h2 {
+      color: #015940;
+      margin-bottom: 25px;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .login-container input:focus {
+      border-color: #047f58;
+      box-shadow: 0 0 6px rgba(4, 127, 88, 0.4);
+    }
+
+    .login-container button {
+      background: #047f58;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .login-container button:hover {
+      background: #015940;
+      transform: scale(1.03);
+    }
+
+    .signup-link {
+      margin-top: 15px;
+      display: block;
+      font-size: 14px;
+    }
+
+    .signup-link a {
+      color: #047f58;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Student Login</h2>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="College Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="signup-link">
+      <p>Don’t have an account? <a href="signup.html">Sign up here</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        const res = await fetch("http://localhost:5000/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const data = await res.json();
+        alert(data.message);
+
+        if (res.ok) {
+  localStorage.setItem("userEmail", email); // ✅ Store email in browser
+  alert("Login successful!");
+  window.location.href = "dashboard.html"; // Redirect
+}
+
+      } catch (err) {
+        console.error("Error:", err);
+        alert("Server error. Please try again.");
+      }
+    });
+ 
+
+  </script>
+</body>
+</html>

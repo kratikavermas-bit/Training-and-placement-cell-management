@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NPTEL Courses - My College</title>
+  <link rel="stylesheet" href="style.css"> <!-- shared navbar -->
+  <link rel="stylesheet" href="nptel.css"> <!-- page-specific CSS -->
+</head>
+<body>
+
+<!-- Navbar -->
+<header>
+  <div class="navbar">
+    <div class="logo">
+      <img src="image logo.png" alt="College Logo">
+      <span>REC Banda</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="jobs.html">Job Alerts</a></li>
+        <li><a href="internship.html">Internships</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="ebooks.html">E-Books</a></li>
+        <li><a href="nptel.html">NPTEL Courses</a></li>
+        <li><a href="contact .html" class="contact-btn">Contact Us</a></li>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+      </ul>
+    </nav>
+  </div>
+  <div class="back-dashboard">
+  <a href="dashboard.html">⬅ Back to Dashboard</a>
+</div>
+
+</header>
+
+<!-- Banner -->
+<div class="nptel-banner">
+  <h1>Enhance Your Skills with NPTEL</h1>
+  <p>Access free online certification courses from IITs and IISc through NPTEL and partner platforms.</p>
+</div>
+
+<!-- NPTEL Section -->
+<div class="nptel-section">
+  <h2>Popular Course Platforms</h2>
+
+  <div class="nptel-grid">
+
+    <!-- NPTEL -->
+    <div class="nptel-card">
+      <img src="nptel.webp" alt="NPTEL Courses">
+      <h3>NPTEL Official</h3>
+      <p>Free online courses & certification programs by IITs and IISc under MHRD.</p>
+      <a href="https://nptel.ac.in/" target="_blank">
+        <button>Visit NPTEL</button>
+      </a>
+    </div>
+
+    <!-- SWAYAM -->
+    <div class="nptel-card">
+      <img src="swayam.webp" alt="Swayam Platform">
+      <h3>SWAYAM</h3>
+      <p>A Government of India initiative offering NPTEL and other MOOC courses online.</p>
+      <a href="https://swayam.gov.in/" target="_blank">
+        <button>Visit SWAYAM</button>
+      </a>
+    </div>
+
+    <!-- YouTube NPTEL -->
+    <div class="nptel-card">
+      <img src="nptel.webp" alt="NPTEL YouTube">
+      <h3>NPTEL YouTube</h3>
+      <p>Watch NPTEL lecture series and tutorials directly on YouTube for free.</p>
+      <a href="https://www.youtube.com/user/nptelhrd" target="_blank">
+        <button>Visit YouTube</button>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 My College. All rights reserved.
+</footer>
+<script>
+  // Check if user is logged in — redirect to login if not
+  const user = localStorage.getItem("userEmail");
+  if (!user) {
+    window.location.href = "login.html";
+  }
+
+  // Logout function
+  function logout() {
+    localStorage.removeItem("userEmail"); // clear user session
+    alert("Logged out successfully!");
+    window.location.href = "login.html"; // redirect to login page
+  }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internships - My College</title>
+  <link rel="stylesheet" href="style.css"> <!-- shared navbar -->
+  <link rel="stylesheet" href="internship.css"> <!-- page-specific CSS -->
+</head>
+<body>
+
+<!-- Navbar -->
+<header>
+  <div class="navbar">
+    <div class="logo">
+      <img src="image logo.png" alt="College Logo">
+      <span>REC Banda</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="jobs.html">Job Alerts</a></li>
+        <li><a href="internship.html">Internships</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="ebooks.html">E-Books</a></li>
+        <li><a href="nptel.html">NPTEL Courses</a></li>
+        <li><a href="contact .html" class="contact-btn">Contact Us</a></li>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+      </ul>
+    </nav>
+  </div>
+  <div class="back-dashboard">
+  <a href="dashboard.html">⬅ Back to Dashboard</a>
+</div>
+
+</header>
+
+<!-- Internships Section -->
+<div class="internship-section">
+  <h2>Available Internships</h2>
+
+  <div class="internship-card">
+    <img src="web developement.webp" alt="Web Development Internship">
+    <h3>Web Development Internship at ABC Corp</h3>
+    <p><strong>Deadline:</strong> 30 Sep 2025</p>
+    <p>Learn front-end and back-end web development in real projects.</p>
+    <button onclick="openInternshipForm('Web Development Internship at ABC Corp')">Apply Now</button>
+  </div>
+
+  <div class="internship-card">
+    <img src="data.webp" alt="Data Science Internship">
+    <h3>Data Science Internship at XYZ Pvt Ltd</h3>
+    <p><strong>Deadline:</strong> 15 Oct 2025</p>
+    <p>Work on live datasets and improve your ML & AI skills.</p>
+    <button onclick="openInternshipForm('Data Science Internship at XYZ Pvt Ltd')">Apply Now</button>
+  </div>
+
+  <div class="internship-card">
+    <img src="cybersecurity.webp" alt="Cybersecurity Internship">
+    <h3>Cybersecurity Internship at SecureTech</h3>
+    <p><strong>Deadline:</strong> 10 Nov 2025</p>
+    <p>Learn penetration testing, threat analysis, and secure coding.</p>
+    <button onclick="openInternshipForm('Cybersecurity Internship at SecureTech')">Apply Now</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="internshipModal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeInternshipForm()">&times;</span>
+    <h2 id="internshipTitle">Apply for Internship</h2>
+    <form action="#" method="post">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <textarea name="message" rows="4" placeholder="Your Message / CV Link" required></textarea>
+      <button type="submit">Submit Application</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 My College. All rights reserved.
+</footer>
+
+<script>
+  function openInternshipForm(name) {
+    const modal = document.getElementById('internshipModal');
+    modal.style.display = 'flex';
+    document.getElementById('internshipTitle').innerText = `Apply for ${name}`;
+  }
+
+  function closeInternshipForm() {
+    const modal = document.getElementById('internshipModal');
+    modal.style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('internshipModal');
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+  
+  // Check if user is logged in — redirect to login if not
+  const user = localStorage.getItem("userEmail");
+  if (!user) {
+    window.location.href = "login.html";
+  }
+
+  // Logout function
+  function logout() {
+    localStorage.removeItem("userEmail"); // clear user session
+    alert("Logged out successfully!");
+    window.location.href = "login.html"; // redirect to login page
+  }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - My College</title>
+  <link rel="stylesheet" href="style.css"> <!-- shared navbar -->
+  <link rel="stylesheet" href="contact.css"> <!-- page-specific CSS -->
+</head>
+<body>
+
+<!-- Navbar -->
+<header>
+  <div class="navbar">
+    <div class="logo">
+      <img src="image logo.png" alt="College Logo">
+      <span>REC Banda</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="jobs.html">Job Alerts</a></li>
+        <li><a href="internship.html">Internships</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="ebooks.html">E-Books</a></li>
+        <li><a href="nptel.html">NPTEL Courses</a></li>
+        <li><a href="contact.html" class="contact-btn">Contact Us</a></li>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Banner -->
+<div class="contact-banner">
+  <h1>Contact Us</h1>
+  <p>We’d love to hear from you! Get in touch with us for queries, feedback, or support.</p>
+</div>
+
+<!-- Contact Section -->
+<div class="contact-section">
+  
+  <!-- Contact Form -->
+  <div class="contact-card">
+    <h2>Send Us a Message</h2>
+    <form action="#" method="post">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!-- Contact Information -->
+  <div class="contact-card">
+    <h2>Reach Us</h2>
+    <p><strong>📍 Address:</strong> My College, XYZ Road, City, State, 123456</p>
+    <p><strong>📞 Phone:</strong> +91 98765 43210</p>
+    <p><strong>📧 Email:</strong> info@mycollege.edu</p>
+    <br>
+    <h2>Our Location</h2>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.509251370005!2d90.42117831498193!3d23.805070784561295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c5c5d9ec1e6f%3A0x82c7f8bbf9bfb1d0!2sCollege!5e0!3m2!1sen!2sin!4v1678457895678" 
+      width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+  </div>
+
+</div>
+
+<footer>
+  &copy; 2025 My College. All rights reserved.
+</footer>
+<script>
+  // Check if user is logged in — redirect to login if not
+  const user = localStorage.getItem("userEmail");
+  if (!user) {
+    window.location.href = "login.html";
+  }
+
+  // Logout function
+  function logout() {
+    localStorage.removeItem("userEmail"); // clear user session
+    alert("Logged out successfully!");
+    window.location.href = "login.html"; // redirect to login page
+  }
+</script>
+
+</body>
+</html>

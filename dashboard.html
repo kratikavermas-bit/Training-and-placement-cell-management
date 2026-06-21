@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #e3f2fd, #f1f8e9);
+    }
+
+    .dashboard-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .welcome {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .welcome h2 {
+      color: #0078d7;
+    }
+
+    .sections {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #f5f5f5;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .logout-btn {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 25px;
+      background-color: #ff5252;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .logout-btn:hover {
+      background-color: #ff1744;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="dashboard-container">
+    <div class="welcome">
+      <h2>Welcome, <span id="userName"></span>!</h2>
+      <p>Here’s what you can explore:</p>
+    </div>
+
+    <div class="sections">
+      <div class="card">
+        <h3>💼 Job Opportunities</h3>
+        <p>View the latest job openings.</p>
+        <a href="jobs.html">Explore Jobs</a>
+      </div>
+
+      <div class="card">
+        <h3>🎓 Internships</h3>
+        <p>Find internship opportunities to gain experience.</p>
+        <a href="internship.html">Explore Internships</a>
+      </div>
+
+      <div class="card">
+        <h3>📚 E-Books</h3>
+        <p>Access useful study materials and e-books.</p>
+        <a href="ebooks.html">Read E-Books</a>
+      </div>
+
+      <div class="card">
+        <h3>🎥 NPTEL Courses</h3>
+        <p>Learn from top instructors online.</p>
+        <a href="nptel.html">View Courses</a>
+      </div>
+
+      <div class="card">
+        <h3>🌐 Alumni Network</h3>
+        <p>Connect with seniors and mentors.</p>
+        <a href="alumni.html">Meet Alumni</a>
+      </div>
+    </div>
+
+    <button class="logout-btn" id="logoutBtn">Logout</button>
+  </div>
+
+  <script>
+    // Check if user is logged in
+    const userEmail = localStorage.getItem("userEmail");
+    if (!userEmail) {
+      alert("Please login first!");
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("userName").textContent = userEmail.split("@")[0];
+    }
+
+    // Logout
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("userEmail");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>
